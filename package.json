@@ -1,0 +1,28 @@
+{
+  "name": "boyd648.github.io",
+  "version": "1.0.0",
+  "description": "boyd648.github.io",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build/rebuild.js",
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boyd648/boyd648.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boyd648/boyd648.github.io/issues"
+  },
+  "homepage": "https://github.com/boyd648/boyd648.github.io#readme",
+  "devDependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-fileupload": "^1.5.1",
+    "sitemap": "^8.0.0"
+  }
+}

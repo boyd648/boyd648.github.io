@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+    <style>
+      main {
+        max-width: 800px;
+        margin: auto;
+      }
+      .input-container {
+        display: flex;
+        margin: 8px;
+      }
+      input {
+        flex-grow: 1;
+      }
+      #editor {
+        width: 100%;
+      }
+      #articleHtml {
+        visibility: hidden;
+        height: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form action="/submit" method="post" enctype="multipart/form-data">
+        <div class="input-container">
+          <label for="title">title:</label><br>
+          <input type="text" id="title" name="title"><br>
+        </div>
+        <div class="input-container">
+          <label for="section">section:</label><br>
+          <input type="text" id="section" name="section">
+        </div>
+        <div class="input-container">
+          <label for="description">description:</label><br>
+          <input type="text" id="description" name="description">
+        </div>
+        <div class="input-container">
+          <label for="canonical">canonical:</label><br>
+          <input type="text" id="canonical" name="canonical">
+        </div>
+        <div class="input-container">
+          <label for="image">image:</label><br>
+          <input type="file" name="image" />
+        </div>
+        <textarea name="articleHtml" id="articleHtml" cols="40" rows="5"></textarea>
+        <div>
+          <div id="editor"></div>
+        </div>
+        <div>
+          <input type="submit"/>
+        </div>
+      </form>
+    </main>
+    <script>
+      const quill = new Quill('#editor', {
+        theme: 'snow'
+      })
+      quill.on('text-change', (delta, oldDelta, source) => {
+        if (source == 'api') {
+          console.log('An API call triggered this change.');
+        } else if (source == 'user') {
+          console.log('A user action triggered this change.');
+        }
+        const html = quill.getSemanticHTML()
+        document.getElementById("articleHtml").value = html
+        articleHtml
+      })
+    </script>
+  </body>
+</html>
