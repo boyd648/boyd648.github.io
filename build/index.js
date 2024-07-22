@@ -17,6 +17,7 @@ const getAllArticles = () => {
     articles.push(JSON.parse(data))
   }
 
+  articles.sort((a, b) => new Date(b.published) - new Date(a.published))
   return articles
 }
 
